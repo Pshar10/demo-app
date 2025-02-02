@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  web:
+    image: pshar10/web:latest
+    container_name: web-app
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+
+  db:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: laravel11
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: '46L6k1MWdoih'
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
